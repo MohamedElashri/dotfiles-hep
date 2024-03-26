@@ -5,10 +5,10 @@
 #
 # Usage Examples:
 # - Using long names:
-# ./start_remote_jupyter.zsh --host "sleepy-earth" --environment "bphysics" --remote-port "8765" --local-port "8765" --directory "~"
+# ./uc_jupyter.zsh --host "sleepy-earth" --environment "bphysics" --remote-port "8765" --local-port "8765" --directory "~"
 #
 # - Using short names:
-# ./start_remote_jupyter.zsh -h "sleepy-earth" -e "bphysics" -rp "8765" -lp "8765" -d "~"
+# ./uc_jupyter.zsh -h "sleepy-earth" -e "bphysics" -rp "8765" -lp "8765" -d "~"
 #
 # Arguments:
 # -h, --host: Specifies the SSH host configuration name. Default is "sleepy-earth" (Connecting to UC sleepy machine using earth as proxy jump step).
