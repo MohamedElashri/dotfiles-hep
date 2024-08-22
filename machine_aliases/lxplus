@@ -1,0 +1,61 @@
+################################## ME HEP dotfiles ##################################
+
+
+## LHCb 
+alias proxy='lhcb-proxy-init' # fire the cern lhcb proxy 
+#alias conda='lb-conda' # My life has enough confusion
+alias afs='cd /afs/cern.ch/work/m/melashri'  # go to my afs space
+alias home='cd /afs/cern.ch/user/m/melashri' # go to my user-space 
+alias work='cd /afs/cern.ch/work/m/melashri' # go to my work-space
+#alias run='lb-run' # I will use LHCb only anyways
+
+## Grid
+alias kinit_='kinit -k -t /afs/cern.ch/user/m/melashri/private/key/melashri.keytab melashri@CERN.CH'
+
+
+
+
+### Tmux by default
+# Check if we are on an SSH connection
+if [ -n "$SSH_CONNECTION" ]; then
+    # Check if this is not a VSCode SSH session
+    if [ -z "$VSCODE_SSH_SESSION" ]; then
+        # Check if tmux is not already running
+        if [ -z "$TMUX" ]; then
+            # Check if the session is interactive (terminal attached)
+            if [ -t 1 ]; then
+                # Extract client IP and port from SSH_CONNECTION
+                client_ip=$(echo $SSH_CONNECTION | awk '{print $1}')
+                client_port=$(echo $SSH_CONNECTION | awk '{print $2}')
+
+                # Generate a unique session name using client IP, port, and current timestamp
+                # Format: ssh_<client_ip>_<client_port>_<YYYYMMDDHHMMSS>
+                timestamp=$(date "+%Y%m%d%H%M%S")
+                session_name="ssh_${client_ip}_${client_port}_${timestamp}"
+
+                # Start tmux session or attach to an existing one with the unique session name
+                tmux attach-session -t "$session_name" || tmux new-session -s "$session_name"
+                exit
+            fi
+        fi
+    fi
+fi
+
+
+
+
+################# functions ###################
+
+ktmux(){
+     if [[ -z "$1" ]]; then #if no argument passed
+        k5reauth -f -i 3600 -p melashri -k /afs/cern.ch/user/m/melashri/private/key/melashri.keytab -- tmux new-session
+     else #pass the argument as the tmux session name
+        k5reauth -f -i 3600 -p melashri -k /afs/cern.ch/user/m/melashri/private/key/melashri.keytab -- tmux new-session -s $1
+        fi
+                }
+
+
+################# functions ###################
+
+
+################################## ME HEP dotfiles ##################################
