@@ -1,0 +1,18 @@
+################################## ME HEP dotfiles ##################################
+
+
+## LHCb
+alias lxplus='source /cvmfs/lhcb.cern.ch/group_login.sh'
+alias kinit='kinit melashri@CERN.CH'
+
+## Allen Aliases
+alias run_allen='toolchain/wrapper ./Allen --sequence interval_indexer'
+
+
+## export specific tools
+export PATH="$HOME/utils/git_feature:$PATH"
+export PATH=$PATH:/usr/local/cuda/bin
+export PATH=$HOME/.local/bin:$PATH
+
+
+################################## ME HEP dotfiles ##################################
