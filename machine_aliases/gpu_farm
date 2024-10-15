@@ -28,9 +28,14 @@ alias run_hlt1='[ -d ~/inference-engine/buildgpu ] && pushd ~/inference-engine/b
 alias run_hlt1_pvfinder='[ -d ~/inference-engine/buildgpu ] && pushd ~/inference-engine/buildgpu > /dev/null && ./toolchain/wrapper ./Allen --sequence hlt1_pp_forward_then_matching_with_pvfinder --mdf /scratch/allen_data/mdf_input/upgrade_mc_minbias_scifi_v5_retinacluster_000_v1.mdf -n 500 -m 500 -r 1000 -t 16 && popd > /dev/null || echo "Directory ~/inference-engine/buildgpu does not exist"'
 
 ## export specific tools
-export PATH="$HOME/utils/git_feature:$PATH"
 export PATH=$PATH:/usr/local/cuda/bin
-export PATH=$HOME/.local/bin:$PATH
+
+
+## ONNX runtime / TensorRT
+export CUDA_HOME=/usr/local/cuda  # Assuming CUDA is still in the system path at /usr/local/cuda
+export CUDNN_HOME=$HOME/local/cuda
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$CUDNN_HOME/lib:$LD_LIBRARY_PATH
 
 
 ################################## ME HEP dotfiles ##################################
