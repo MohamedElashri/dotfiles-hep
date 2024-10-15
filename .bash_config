@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ################################## ME HEP dotfiles ##################################
 
 
@@ -9,13 +11,14 @@ PROMPT_COMMAND='history -a'
 HISTSIZE=100000
 HISTFILESIZE=200000
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/local/bin:$PATH"
-
 # Dircolors setup
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
+
+
+# Include Path
+export PATH="$HOME/.local/bin:$PATH"
 
 
 
