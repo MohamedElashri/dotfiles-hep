@@ -30,16 +30,6 @@ module load cuda/11.3
 ## LHCb
 alias source_lhcb='source /cvmfs/lhcb.cern.ch/lib/var/lib/LbEnv/stable/linux-64/bin/activate'
 
-
-
-## Allen-specific Aliases
-alias what_to_run='echo "run_allen_indexer_long for 10k events file and run_allen_indexer_short for 10 events"'
-alias run_allen_indexer_long='toolchain/wrapper ./Allen --sequence indexer_interval --mdf /share/lazy/tboettch/allen/MiniBrunel_2018_MinBias_FTv4_DIGI_retinacluster.mdf'
-alias run_allen_indexer_short='toolchain/wrapper ./Allen --sequence indexer_interval'
-alias build_allen='./data/home/melashri/iris/Allen_Work/Allen/build_allen.sh -b'
-alias rm_allen_build='./data/home/melashri/iris/Allen_Work/Allen/build_allen.sh -f'
-alias source_allen='source /cvmfs/lhcb.cern.ch/lib/var/lib/LbEnv/stable/linux-64/bin/activate'
-
 ## Data Access
 alias lazy='cd /share/lazy/'
 
@@ -48,13 +38,7 @@ alias lxplus='source /cvmfs/lhcb.cern.ch/group_login.sh'
 alias kinit='kinit melashri@CERN.CH'
 
 ## B Analysis
-alias b='cd /data/home/melashri/BPhysics/'
 alias my_conda='conda activate april2023ME'
-alias lambda_fits='cd /data/home/melashri/BPhysics/Mohamed/scripts/fits/lambda'
-alias b_data='cd /data/home/melashri/BPhysics/data'
-alias b_utils='/data/home/melashri/BPhysics/utils'
-alias b_analysis='/data/home/melashri/BPhysics/analysis'
-alias b_sim='cd /data/home/melashri/BPhysics/sim'
 
 # ----------- #### ME bashrc #### -----------#
 # Auto-activate april2023ME environment
