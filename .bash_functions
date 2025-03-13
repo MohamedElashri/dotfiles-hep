@@ -11,32 +11,6 @@ function cl() {
     ls -F --color=auto
 }				
 
-# Common tmux usage function
-tx() {
-    case $1 in
-        -n)
-            tmux new-session -d -s "$2" && tmux attach-session -t "$2"
-            ;;
-        -t)
-            tmux attach-session -t "$2"
-            ;;
-        -d)
-            tmux kill-session -t "$2"
-            ;;
-        -h)
-            echo "Usage: tx -n [session_name] | -t [session_name] | -d [session_name]"
-            echo "Options:"
-            echo "-n [session_name] : Create a new session with the given name and attach to it"
-            echo "-t [session_name] : Attach to an existing session with the given name"
-            echo "-d [session_name] : Delete a session with the given name"
-            echo "-h                : Display this help message"
-            ;;
-        *)
-            echo "Invalid option: $1. Use -h for help" 1>&2
-            ;;
-    esac
-}
-
 # Extract most known archives with one command
 extract() {
     if [ -f $1 ] ; then
