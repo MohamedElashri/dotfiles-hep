@@ -7,9 +7,9 @@ alias showdate='echo "Today is $(date)"'
 alias printdir='echo "The current directory is: $(pwd)"'
 alias listfiles='echo "The files in this directory are: $(ls)"'
 alias showcpu='echo "The current CPU usage is: $(mpstat 1 1 | awk '\''/all/ {print 100 - $NF "%"}'\'')"'
-alias showmem='echo "The current memory usage is: $(awk '"'"'/MemTotal|MemAvailable/{if ($1=="MemTotal:") total=$2; else if ($1=="MemAvailable:") available=$2} END{printf "%.2f%% used", (total-available)/total*100}'"'"' /proc/meminfo)"'
+alias showmem='echo "The current memory usage is: $(free | awk '\''/Mem/{printf("%.2f%% used\n", $3/$2*100)}'\'')"'
 alias showdisk='echo "The disk usage is: $(df -h | awk '\''$NF=="/"{print $5}'\'')"'
-alias mycpu='echo "Your current CPU usage is: $(ps -u $USER -o %cpu= | awk '\''{sum+=$1} END {printf "%.2f%%", sum}'\'')"'
+alias mycpu='echo "Your current CPU usage is: $(ps -u $USER -o %cpu= | awk -v cores=$(nproc) '\''{sum+=$1} END {printf "%.2f%%", sum/cores}'\'')"'
 
 ## File and Directory Management
 alias ll='ls -l'
@@ -44,13 +44,6 @@ alias reload='source ~/.bashrc'
 alias which='type -a'
 alias c='clear'
 alias free='free -m'
-
-## Tmux
-alias tmux_new='tmux new -s' # new session by name by default
-alias tmux_attach='tmux a -t' # attach by name by default
-alias tmux_list='tmux ls' # list the active session
-alias tmux_kill='tmux kill-session -t'
-alias tmux_kill_all='pkill -f tmux' # kill all tmux processes
 
 ## GNU Utilities
 alias lt='ls --human-readable --size -1 -S --classify'
