@@ -18,6 +18,8 @@ alias ..='cd ..'
 alias l.='ls -d .* --color=auto'
 alias mkdir='mkdir -p'
 alias t='tree -L 1'
+alias countfiles='find . -type f | wc -l'
+alias countdirs='find . -type d | wc -l'
 
 ## File Viewing and Editing
 alias bashrc='cat ~/.bashrc'
