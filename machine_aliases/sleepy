@@ -3,6 +3,8 @@
 
 # Environment Setup
 export VIMRUNTIME="$HOME/myvim/vim90/runtime"
+export PATH=/usr/local/cuda-12.6/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
 
 
 # Conda initialization
@@ -20,30 +22,29 @@ fi
 unset __conda_setup
 # <<< conda initialize <
 
-# Module management
-module purge
-module load gcc/10.1.0
-module load cuda/11.3
-#module load cuda/12.1
-
 
 ## LHCb
 alias source_lhcb='source /cvmfs/lhcb.cern.ch/lib/var/lib/LbEnv/stable/linux-64/bin/activate'
 
 ## Data Access
 alias lazy='cd /share/lazy/'
+alias mydata='cd /share/lazy/Mohamed/'
 
 ## LHCb Common
 alias lxplus='source /cvmfs/lhcb.cern.ch/group_login.sh'
 alias kinit='kinit melashri@CERN.CH'
 
 ## B Analysis
-alias my_conda='conda activate april2023ME'
+alias b='cd /data/home/melashri/analyses'
+alias b_conda='conda activate bphysics'
+alias b_data='cd /share/lazy/Mohamed/'
 
-# ----------- #### ME bashrc #### -----------#
-# Auto-activate april2023ME environment
-conda activate april2023ME
-
+# cuDNN Configuration
+export CUDNN_HOME=/data/home/melashri/local/cuda
+export LD_LIBRARY_PATH=$CUDNN_HOME/lib64:$LD_LIBRARY_PATH
+export CPATH=$CUDNN_HOME/include:$CPATH
+export LIBRARY_PATH=$CUDNN_HOME/lib64:$LIBRARY_PATH
 
 
 #### Machine Specific Aliases ####
+
